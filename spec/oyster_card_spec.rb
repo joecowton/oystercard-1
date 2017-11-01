@@ -60,7 +60,7 @@ describe OysterCard do
 
     it 'deduct the balance by minimum fare' do
       card_with_money.touch_in(station)
-      expect {card_with_money.touch_out(exit_station)}.to change{card_with_money.balance}.by(-OysterCard::MINIMUM_CHARGE)
+      expect {card_with_money.touch_out(exit_station)}.to change{card_with_money.balance}.by(-Journey::MINIMUM_CHARGE)
     end
     it 'Forget the entry station on touch out' do
       card_with_money.touch_in(station)
