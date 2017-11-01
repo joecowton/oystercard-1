@@ -2,15 +2,19 @@ require 'journey'
 
 
 describe Journey do
-  subject(:journey) {described_class.new}
+  subject(:journey) {described_class.new(:entry_station, :exit_station)}
 
   describe 'attributes' do
-    it 'Creates an emty variable entry_station' do
-      expect(subject.entry_station).to be_empty?
+    it 'sets instance variable to entry station' do
+      expect(subject.entry_station).to eq(:entry_station)
     end
 
-    it 'Crates an empty variable exit_station' do
-      expect(subject.exit_station).to be_empty?
+    it 'sets instance variable exit station' do
+      expect(subject.exit_station).to eq(:exit_station)
    end
+
+
+
+   
   end
 end

@@ -5,10 +5,11 @@ describe OysterCard do
   subject(:card) { described_class.new }
 
   let(:card_with_money) { described_class.new(5)}
-
   let(:station)  { double :station }
-
   let(:exit_station)  { double :station }
+
+
+
   describe 'attributes' do
     it '.balance return default balance' do
       expect(card.balance).to eq(OysterCard::DEFAULT_BALANCE)
@@ -17,6 +18,10 @@ describe OysterCard do
     it '.history return an array by default' do
       expect(card.history).to eq([])
     end
+
+    # it 'initialize journey instance' do
+    #   expect(subject.journey).to eq("test")
+    # end
   end
 
   describe '#top_up' do
@@ -44,7 +49,6 @@ describe OysterCard do
     it 'Remember the entry station on touch in' do
       card_with_money.touch_in(station)
       expect(card_with_money.entry_station).to eq(station)
-
     end
   end
 
