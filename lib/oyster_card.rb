@@ -5,7 +5,7 @@ class OysterCard
   DEFAULT_BALANCE = 0
   DEFAULT_LIMIT = 90
   MINIMUM_CHARGE= 1
-  attr_reader :balance, :entry_station, :history, :journey
+  attr_reader :balance, :history, :journey
 
   def initialize(balance = DEFAULT_BALANCE, journey = Journey.new)
     @balance = balance
@@ -20,18 +20,24 @@ class OysterCard
 
   def touch_in(station)
     raise ('insufficent balance on the card') unless sufficent_money?
-    raise('card already in use') if in_journey?
+    # raise('card already in use') if journey.in_journey?
     journey.entry_station(station)
   end
 
   def touch_out(station)
-    raise('card did not touch in') unless in_journey?
-    fare(MINIMUM_CHARGE)
-    @history << @journey.new(@entry_station, station)
-    @entry_station = nil
+    # raise('card did not touch in') unless journey.in_journey?
+    deduct
+    journey.exit_station(station)
+    @history << journey.current
+    journey.complete
   end
 
+
 private
+
+def deduct
+  @balance -= journey.fare
+end
 
   def limit?(amount)
     @balance + amount > DEFAULT_LIMIT
