@@ -22,8 +22,8 @@ class OysterCard
   end
 
   def touch_out(station)
-    deduct(MINIMUM_LIMIT)
     touch_out_error?
+    deduct(MINIMUM_LIMIT)
     save_journey(station)
     @entry_station = nil
   end
