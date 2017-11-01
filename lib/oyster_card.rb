@@ -1,7 +1,7 @@
 class OysterCard
   DEFAULT_BALANCE = 0
   DEFAULT_LIMIT = 90
-  MINIMUM_LIMIT= 1
+  MINIMUM_CHARGE= 1
   attr_reader :balance, :entry_station, :history
 
   def initialize(balance = DEFAULT_BALANCE)
@@ -23,7 +23,7 @@ class OysterCard
 
   def touch_out(station)
     touch_out_error?
-    deduct(MINIMUM_LIMIT)
+    deduct(MINIMUM_CHARGE)
     save_journey(station)
     @entry_station = nil
   end
@@ -36,7 +36,7 @@ private
 
 
   def sufficent_money?
-    balance > MINIMUM_LIMIT
+    balance > MINIMUM_CHARGE
   end
 
   def in_journey?
