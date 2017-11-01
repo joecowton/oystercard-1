@@ -28,6 +28,10 @@ class OysterCard
     @entry_station = nil
   end
 
+  def save_journey(station)
+    @history << {@entry_station => station}
+  end
+
 private
 
   def limit?(amount)
@@ -60,7 +64,5 @@ private
     raise('card did not touch in') unless in_journey?
   end
 
-  def save_journey(station)
-    @history << {@entry_station => station}
-  end
+
 end
