@@ -69,8 +69,9 @@ describe OysterCard do
     end
     it 'add hash to history' do
       card_with_money.touch_in(station)
-      card_with_money.touch_out(exit_station)
-      expect(card_with_money.history).to include({station => exit_station})
+
+      expect { card_with_money.touch_out(exit_station) }
+      .to change { card_with_money.history.length }.by(1)
     end
   end
 end

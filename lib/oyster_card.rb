@@ -26,7 +26,7 @@ class OysterCard
 
   def touch_out(station)
     touch_out_error?
-    deduct(MINIMUM_CHARGE)
+    fare(MINIMUM_CHARGE)
     @history << @journey.new(@entry_station, station)
     @entry_station = nil
   end
@@ -45,7 +45,7 @@ private
     @entry_station
   end
 
-  def deduct(amount)
+  def fare(amount)
     @balance -= amount
   end
 

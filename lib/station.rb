@@ -1,5 +1,5 @@
 class Station
-  def initialize(name: name , zone: zone)
+  def initialize(name , zone)
     @name = name
     @zone = zone
   end

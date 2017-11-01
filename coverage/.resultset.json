@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/josephcowton/projects/oystercard/spec/journey_spec.rb": [
+      "/Users/oleg/projects/oyster_card/spec/journey_spec.rb": [
         1,
         null,
         null,
@@ -23,7 +23,7 @@
         null,
         null
       ],
-      "/Users/josephcowton/projects/oystercard/lib/journey.rb": [
+      "/Users/oleg/projects/oyster_card/lib/journey.rb": [
         1,
         1,
         null,
@@ -34,7 +34,7 @@
         null,
         null
       ],
-      "/Users/josephcowton/projects/oystercard/spec/oyster_card_spec.rb": [
+      "/Users/oleg/projects/oyster_card/spec/oyster_card_spec.rb": [
         1,
         null,
         1,
@@ -106,13 +106,14 @@
         null,
         1,
         1,
-        1,
-        1,
+        null,
+        2,
+        2,
         null,
         null,
         null
       ],
-      "/Users/josephcowton/projects/oystercard/lib/oyster_card.rb": [
+      "/Users/oleg/projects/oyster_card/lib/oyster_card.rb": [
         1,
         1,
         null,
@@ -180,7 +181,7 @@
         null,
         null
       ],
-      "/Users/josephcowton/projects/oystercard/lib/station.rb": [
+      "/Users/oleg/projects/oyster_card/lib/station.rb": [
         1,
         1,
         2,
@@ -189,7 +190,7 @@
         1,
         null
       ],
-      "/Users/josephcowton/projects/oystercard/spec/station_spec.rb": [
+      "/Users/oleg/projects/oyster_card/spec/station_spec.rb": [
         1,
         null,
         1,
@@ -205,6 +206,6 @@
         null
       ]
     },
-    "timestamp": 1509540159
+    "timestamp": 1509541653
   }
 }
