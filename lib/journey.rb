@@ -21,7 +21,11 @@ class Journey
   end
 
   def in_journey?
-     @entry_station
+     !!@entry_station
+  end
+
+  def reset_entry_station
+      @entry_station = nil
   end
 
   def complete
@@ -31,13 +35,11 @@ class Journey
   end
 
   def penalty_fare
-    in_journey? ? 0 : 5
+    @entry_station && @exit_station ? 0 : 5
   end
 
   def fare
     MINIMUM_CHARGE + penalty_fare
   end
-
-
 
 end
