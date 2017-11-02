@@ -16,6 +16,10 @@ def finish(station)
   current_journey
 end
 
+def aquire_fare
+  @current_journey.fare
+end
+
 private
 
 def current_journey

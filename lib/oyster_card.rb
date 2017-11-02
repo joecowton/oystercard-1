@@ -19,7 +19,7 @@ class OysterCard
   end
 
   def touch_in(station)
-    # raise ('insufficent balance on the card') unless sufficent_money?
+    raise ('insufficent balance on the card') unless sufficent_money?
     # deduct if journey.in_journey? #both entry and exit station present
     @journey_log.start(station)
 
@@ -29,17 +29,17 @@ class OysterCard
 
   def touch_out(station)
     @journey_log.finish(station)
+    deduct_fare(@journey_log.aquire_fare)
 
   #   raise('card did not touch in') unless journey.in_journey?
-  #   deduct
-  #   journey.exit_station(station)
-  #   @history << journey.current
   #   journey.complete
   end
+
+
 private
 
-  def deduct
-    @balance -= journey.fare
+  def deduct_fare(amount)
+    @balance -= amount.to_i
   end
 
   def limit?(amount)
