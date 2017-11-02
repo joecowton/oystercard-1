@@ -1,16 +1,16 @@
 require './lib/journey.rb'
 require './lib/station.rb'
+require './lib/journeylog.rb'
 
 class OysterCard
   DEFAULT_BALANCE = 0
   DEFAULT_LIMIT = 90
   MINIMUM_CHARGE= 1
-  attr_reader :balance, :history, :journey
+  attr_reader :balance, :journey
 
-  def initialize(balance = DEFAULT_BALANCE, journey = Journey.new)
+  def initialize(balance = DEFAULT_BALANCE, journey = JourneyLog.new)
     @balance = balance
-    @history = []
-    @journey = journey
+    @journey_log = journey
   end
 
   def top_up(amount)
@@ -19,21 +19,23 @@ class OysterCard
   end
 
   def touch_in(station)
-    raise ('insufficent balance on the card') unless sufficent_money?
-    deduct if journey.in_journey? #both entry and exit station present
-    journey.reset_entry_station if journey.in_journey?
-    journey.entry_station(station)
+    # raise ('insufficent balance on the card') unless sufficent_money?
+    # deduct if journey.in_journey? #both entry and exit station present
+    @journey_log.start(station)
+
+    # journey.reset_entry_station if journey.in_journey?
+    # journey.entry_station(station)
   end
 
   def touch_out(station)
-    raise('card did not touch in') unless journey.in_journey?
-    deduct
-    journey.exit_station(station)
-    @history << journey.current
-    journey.complete
+    @journey_log.finish(station)
+
+  #   raise('card did not touch in') unless journey.in_journey?
+  #   deduct
+  #   journey.exit_station(station)
+  #   @history << journey.current
+  #   journey.complete
   end
-
-
 private
 
   def deduct
